@@ -22,36 +22,28 @@ enum Direction {
 /// or to the depth (depending on the direction). The final value is determined by
 /// multiplying the horizontal position by the depth.
 fn calculate_final_position(movements: Vec<Direction>) -> usize {
-    let mut horizontal_position = 0;
-    let mut depth = 0;
-    for movement in movements.iter() {
-        match movement {
-            Direction::Forward(n) => horizontal_position += n,
-            Direction::Down(n) => depth += n,
-            Direction::Up(n) => depth -= n,
-        }
-    }
-    horizontal_position * depth
+    let output = movements
+        .iter()
+        .fold((0, 0), |(pos, dep), movement| match movement {
+            Direction::Forward(n) => (pos + n, dep),
+            Direction::Down(n) => (pos, dep + n),
+            Direction::Up(n) => (pos, dep - n),
+        });
+    output.0 * output.1
 }
 
 /// Similar to [`calculate_final_position`], this function takes into account the additional
 /// instructions of tracking aim and determining the depth based on the aim. The additional
 /// instructions came as part 2 of the problem.
 fn calculate_final_position_part_2(movements: Vec<Direction>) -> usize {
-    let mut horizontal_position = 0;
-    let mut depth = 0;
-    let mut aim = 0;
-    for movement in movements.iter() {
-        match movement {
-            Direction::Forward(n) => {
-                horizontal_position += n;
-                depth += aim * n;
-            }
-            Direction::Down(n) => aim += n,
-            Direction::Up(n) => aim -= n,
-        }
-    }
-    horizontal_position * depth
+    let output = movements
+        .iter()
+        .fold((0, 0, 0), |(pos, dep, aim), movement| match movement {
+            Direction::Forward(n) => (pos + n, dep + aim * n, aim),
+            Direction::Down(n) => (pos, dep, aim + n),
+            Direction::Up(n) => (pos, dep, aim - n),
+        });
+    output.0 * output.1
 }
 
 /// Parses the input line by line and returns a vector of directions and magnitudes. This function can panic
