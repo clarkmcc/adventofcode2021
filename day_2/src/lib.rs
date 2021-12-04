@@ -8,7 +8,7 @@ use std::{
 /// Specifies a movement direction and an magnitude moved in that direction for the
 /// submarine. Because this is a submarine, down would increase the depth further
 /// whereas up would decrease the depth.
-enum Direction {
+pub enum Direction {
     // Increases our horizontal position
     Forward(usize),
     // Increases the depth
@@ -21,7 +21,7 @@ enum Direction {
 /// is determined by applying the usize contained in the direction to a horizonal position
 /// or to the depth (depending on the direction). The final value is determined by
 /// multiplying the horizontal position by the depth.
-fn calculate_final_position(movements: Vec<Direction>) -> usize {
+pub fn calculate_final_position(movements: Vec<Direction>) -> usize {
     let output = movements
         .iter()
         .fold((0, 0), |(pos, dep), movement| match movement {
@@ -35,7 +35,7 @@ fn calculate_final_position(movements: Vec<Direction>) -> usize {
 /// Similar to [`calculate_final_position`], this function takes into account the additional
 /// instructions of tracking aim and determining the depth based on the aim. The additional
 /// instructions came as part 2 of the problem.
-fn calculate_final_position_part_2(movements: Vec<Direction>) -> usize {
+pub fn calculate_final_position_part_2(movements: Vec<Direction>) -> usize {
     let output = movements
         .iter()
         .fold((0, 0, 0), |(pos, dep, aim), movement| match movement {
@@ -48,8 +48,8 @@ fn calculate_final_position_part_2(movements: Vec<Direction>) -> usize {
 
 /// Parses the input line by line and returns a vector of directions and magnitudes. This function can panic
 /// and is meant to be used in a controlled environment such as a test.
-fn parse_input<R: Read>(input: R) -> Vec<Direction> {
-    io::BufReader::new(input)
+pub fn parse_input() -> Vec<Direction> {
+    io::BufReader::new(include_str!("input.txt").as_bytes())
         .lines()
         .into_iter()
         .map(|v| {
@@ -111,21 +111,11 @@ mod tests {
 
     #[test]
     fn test_given_calculate_final_position() {
-        assert_eq!(
-            2117664,
-            calculate_final_position(parse_input(BufReader::new(
-                include_str!("input.txt").as_bytes(),
-            )))
-        )
+        assert_eq!(2117664, calculate_final_position(parse_input()))
     }
 
     #[test]
     fn test_given_calculate_final_position_part_2() {
-        assert_eq!(
-            2073416724,
-            calculate_final_position_part_2(parse_input(BufReader::new(
-                include_str!("input.txt").as_bytes(),
-            )))
-        )
+        assert_eq!(2073416724, calculate_final_position_part_2(parse_input()))
     }
 }
