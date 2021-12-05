@@ -7,5 +7,5 @@ This is my first year doing Advent of Code. I've used Rust in the past lightly f
 | Day | Name               | Link                       | Part #1 Speed | Part #2 Speed | Concepts         |
 | --- | ------------------ | -------------------------- | ------------- | ------------- | ---------------- |
 | #1  | Sonar Sweep        | [Link](./day_1/src/lib.rs) |               |               |                  |
-| #2  | Dive!              | [Link](./day_2/src/lib.rs) | 652.83 us     | 821.63 us     | Enums and `fold` |
-| #3  | Binary Diagnostics | [Link](./day_3/src/lib.rs) |               | 292.53us      | Bit shifting     |
+| #2  | Dive!              | [Link](./day_2/src/lib.rs) | 1.5915 us     | 1.3229 us     | Enums and `fold` |
+| #3  | Binary Diagnostics | [Link](./day_3/src/lib.rs) |               | 260.91 us     | Bit shifting     |

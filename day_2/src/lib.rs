@@ -8,6 +8,7 @@ use std::{
 /// Specifies a movement direction and an magnitude moved in that direction for the
 /// submarine. Because this is a submarine, down would increase the depth further
 /// whereas up would decrease the depth.
+#[derive(Clone)]
 pub enum Direction {
     // Increases our horizontal position
     Forward(usize),

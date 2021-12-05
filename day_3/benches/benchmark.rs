@@ -3,9 +3,9 @@ use day_3::{calculate_oxygen_co2_rating, parse_input};
 
 fn criterion_benchmark(c: &mut Criterion) {
     c.bench_function("calculate_oxygen_co2_rating", |b| {
+        let (bytes, size) = parse_input();
         b.iter(|| {
-            let (bytes, size) = parse_input();
-            calculate_oxygen_co2_rating(bytes, size);
+            calculate_oxygen_co2_rating(bytes.clone(), size);
         })
     });
 }
