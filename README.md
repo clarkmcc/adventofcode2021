@@ -4,8 +4,9 @@ This is my first year doing Advent of Code. I've used Rust in the past lightly f
 
 ## Solutions
 
-| Day | Name               | Link                       | Part #1 Speed | Part #2 Speed | Concepts         |
-| --- | ------------------ | -------------------------- | ------------- | ------------- | ---------------- |
-| #1  | Sonar Sweep        | [Link](./day_1/src/lib.rs) |               |               |                  |
-| #2  | Dive!              | [Link](./day_2/src/lib.rs) | 1.5915 us     | 1.3229 us     | Enums and `fold` |
-| #3  | Binary Diagnostics | [Link](./day_3/src/lib.rs) |               | 260.91 us     | Bit shifting     |
+| Day | Name               | Link                       | Part #1 Speed               | Part #2 Speed | Concepts         |
+| --- | ------------------ | -------------------------- | --------------------------- | ------------- | ---------------- |
+| #1  | Sonar Sweep        | [Link](./day_1/src/lib.rs) |                             |               |                  |
+| #2  | Dive!              | [Link](./day_2/src/lib.rs) | 1.5915 us                   | 1.3229 us     | Enums and `fold` |
+| #3  | Binary Diagnostics | [Link](./day_3/src/lib.rs) |                             | 260.91 us     | Bit shifting     |
+| #4  | Giant Squid        | [Link](./day_4/src/lib.rs) | 514.23 us (Parts #1 and #2) |               | Matrixes         |
