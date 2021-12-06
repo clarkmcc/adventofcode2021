@@ -2,7 +2,7 @@
 
 use std::{
     io::BufRead,
-    io::{self, Read},
+    io::{self},
 };
 
 /// Specifies a movement direction and an magnitude moved in that direction for the
@@ -76,8 +76,6 @@ pub fn parse_input() -> Vec<Direction> {
 
 #[cfg(test)]
 mod tests {
-    use std::io::BufReader;
-
     use super::*;
 
     #[test]
