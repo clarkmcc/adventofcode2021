@@ -2,19 +2,19 @@
 /// by taking the mean (which is better than the median for this problem) and creating a window
 /// before and after the mean. For each value in within this window, we calculate the optimal cost
 /// and return that.
-pub fn optimal_positions_part2(current: Vec<usize>, window: usize) -> usize {
-    let avg = current.iter().sum::<usize>() / current.len();
+pub fn optimal_positions_part2(current: Vec<isize>, window: isize) -> isize {
+    let avg = current.iter().sum::<isize>() / current.len() as isize;
     (avg - window..avg + window)
         .map(|pos| {
             current
                 .iter()
                 .map(|v| {
-                    let s = (*v as isize - pos as isize).abs();
+                    let s = (*v - pos).abs();
                     s * (s + 1) / 2
                 })
-                .sum::<isize>() as usize
+                .sum::<isize>()
         })
-        .reduce(|acc, next| if next < acc { next } else { acc })
+        .min()
         .expect("expected a cost result")
 }
 
@@ -23,23 +23,18 @@ pub fn optimal_positions_part2(current: Vec<usize>, window: usize) -> usize {
 /// costs to get there. Getting the median is optimized using select_nth_unstable which performs
 /// a quicksort. Honestly, I don't know why this works given that current's order matters and
 /// select_nth_unstable cannot guaruntee that order.
-pub fn optimal_positions_part1(mut current: Vec<usize>) -> usize {
+pub fn optimal_positions_part1(mut current: Vec<isize>) -> isize {
     let mid = current.len() / 2;
-    current.select_nth_unstable(mid);
-    current
-        .iter()
-        .map(|v| {
-            (*v as isize - *current.get(mid).expect("expected a median") as isize).abs() as usize
-        })
-        .sum::<usize>()
+    let med = *current.select_nth_unstable(mid).1;
+    current.iter().map(|v| (*v - med).abs()).sum::<isize>()
 }
 
 // Parses the problem input
-pub fn parse_input() -> Vec<usize> {
+pub fn parse_input() -> Vec<isize> {
     include_str!("input.txt")
         .split(",")
-        .map(|v| v.parse::<usize>().expect("expected usize"))
-        .collect::<Vec<usize>>()
+        .map(|v| v.parse::<isize>().expect("expected usize"))
+        .collect::<Vec<isize>>()
 }
 
 #[test]
