@@ -12,4 +12,4 @@ This is my first year doing Advent of Code. I've used Rust in the past lightly f
 | #4  | Giant Squid          | [Link](./day_4/src/lib.rs) | 514.23 us (Parts #1 and #2) |               | Matrixes         |
 | #5  | Hydrothermal Venture | [Link](./day_5/src/lib.rs) | 8.96 ms                     | 11.54 ms      | Matrixes         |
 | #6  | Lanternfish          | [Link](./day_6/src/lib.rs) | 3.4208 us                   | 3.8148 us     | Slices           |
-| #7  | Lanternfish          | [Link](./day_7/src/lib.rs) | 34.769 us                   | 5.8416 us     | Mean and median  |
+| #7  | Lanternfish          | [Link](./day_7/src/lib.rs) | 1.8758 us                   | 3.6058 us     | Mean and median  |

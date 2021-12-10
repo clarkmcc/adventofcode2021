@@ -1,8 +1,7 @@
 /// Returns the cost to get all crab submarines to the optimal positions. The cost is calculated
 /// by taking the mean (which is better than the median for this problem) and creating a window
 /// before and after the mean. For each value in within this window, we calculate the optimal cost
-/// and return that. This solution runs significantly faster than the part 1 solution because
-/// calculating a mean does not require sorting.
+/// and return that.
 pub fn optimal_positions_part2(current: Vec<usize>, window: usize) -> usize {
     let avg = current.iter().sum::<usize>() / current.len();
     (avg - window..avg + window)
@@ -21,15 +20,16 @@ pub fn optimal_positions_part2(current: Vec<usize>, window: usize) -> usize {
 
 /// Returns the cost to get all crab submarines to the optimal positions. It just so happens
 /// that this can be calculated by positioning all submarines to the median and summing the
-/// costs to get there.
+/// costs to get there. Getting the median is optimized using select_nth_unstable which performs
+/// a quicksort. Honestly, I don't know why this works given that current's order matters and
+/// select_nth_unstable cannot guaruntee that order.
 pub fn optimal_positions_part1(mut current: Vec<usize>) -> usize {
-    // todo: try quickselect algorithm to avoid a sort
-    current.sort();
+    let mid = current.len() / 2;
+    current.select_nth_unstable(mid);
     current
         .iter()
         .map(|v| {
-            (*v as isize - *current.get(current.len() / 2).expect("expected a median") as isize)
-                .abs() as usize
+            (*v as isize - *current.get(mid).expect("expected a median") as isize).abs() as usize
         })
         .sum::<usize>()
 }
