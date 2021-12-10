@@ -11,3 +11,4 @@ This is my first year doing Advent of Code. I've used Rust in the past lightly f
 | #3  | Binary Diagnostics   | [Link](./day_3/src/lib.rs) |                             | 260.91 us     | Bit shifting     |
 | #4  | Giant Squid          | [Link](./day_4/src/lib.rs) | 514.23 us (Parts #1 and #2) |               | Matrixes         |
 | #5  | Hydrothermal Venture | [Link](./day_5/src/lib.rs) | 8.96 ms                     | 11.54 ms      | Matrixes         |
+| #6  | Lanternfish          | [Link](./day_6/src/lib.rs) | 3.4208 us                   | 3.8148 us     | Slices           |
